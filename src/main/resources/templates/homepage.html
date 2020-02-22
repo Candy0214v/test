@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Find words in dictionary.</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+<style>
+    .sentence {
+        white-space: pre-wrap;
+        position:relative;
+        font-size: 17px;
+        padding-top: 5px;
+        color: #1a2d40;
+    }
+</style>
+</head>
+
+<body>
+
+<div>
+    <div id = "homepage">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Find words in dictionary.</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div id="divTag" class="form-horizontal">
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">add words</label>
+                                    <div class="col-sm-10">
+                                        <textarea id="add" name="add" class="form-control" rows="4"
+                                        placeholder="Input word(s) if more than one could be separated by comma( , ).&nbsp;&nbsp;For example : hello,world "></textarea>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button id="addButton" class="btn btn-primary" type="button" th:onclick="'javascript:addwords();'">&nbsp;&nbsp;add&nbsp;&nbsp;</button>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">find words</label>
+                                    <div class="col-sm-10">
+                                        <textarea id="fine" name="find" class="form-control" rows="4"
+                                                  placeholder="Input serial letters."></textarea>
+                                    </div>
+                                </div>
+                                <div id = "result"  class="form-group" style="display: none">
+                                    <label class="col-sm-2 control-label">Output sentence</label>
+                                    <div class="col-sm-10">
+                                        <div id="sentence" class="sentence" ></div>
+                                    </div>
+                                </div>
+                                <div id="divide" class="hr-line-dashed" style="display: none"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">select dictionary</label>
+                                    <div class="col-sm-10">
+                                        <label class="radio-inline">
+                                            <input type="radio"  value="defaultDic" name="dictionary" />default dictionary
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio"  value="userDic" name="dictionary" />user customized dictionary
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio"  value="bothDic" name="dictionary" />both dictionaries
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button id="searchButton" class="btn btn-primary" type="button" th:onclick="'javascript:findwords();'">&nbsp;&nbsp;search&nbsp;&nbsp;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/alert.js}"></script>
+
+
+<script th:inline="javascript">
+
+    $(document).ready(function () {
+        $('input:radio:first').attr('checked','checked');
+    });
+
+    function addwords() {
+        var words = $("#add").val();
+        console.log(words);
+        if(words==""||words==null){
+            myAlert('Tips','Cannot be empty!');
+            return;
+        }else {
+            $.ajax({
+                type:'POST',
+                url:'/addwords',
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                data: {"words": words},
+                success:function (data) {
+                    myAlert('Tips',data.msg);
+                },
+                error:function () {
+                    myAlert('Tips','System exception!');
+                },
+                dataType:'JSON'
+            });
+        }
+    }
+
+    function findwords(){
+        var letters = $("#fine").val();
+        var dicType = $('input:radio[name=dictionary]:checked').val();
+        console.log(dicType);
+        console.log(letters);
+        if(letters==""||letters==null){
+            myAlert('Tips','Cannot be empty!');
+            return;
+        }else {
+            $.ajax({
+                type:'GET',
+                url:'/findwords',
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                data: {"letters": letters,"dicType":dicType},
+                success:function (data) {
+                    console.log(data);
+                    $("#divide").show();
+                    $("#result").show();
+                    $("#sentence").html(data);
+                },
+                error:function () {
+                    myAlert('Tips','System exception!')
+                }
+            });
+        }
+    }
+</script>
+
+</body>
+
+</html>

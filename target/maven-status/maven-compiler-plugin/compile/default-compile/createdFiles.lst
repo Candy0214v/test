@@ -1,0 +1,6 @@
+com\wjh\findwords\Application.class
+com\wjh\findwords\entity\Dictionary.class
+com\wjh\findwords\controller\WordsController.class
+com\wjh\findwords\service\InitDictionary.class
+com\wjh\findwords\service\FindWords.class
+com\wjh\findwords\service\AddWords.class
