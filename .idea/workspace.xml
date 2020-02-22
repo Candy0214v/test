@@ -150,7 +150,11 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PATH_TO_GIT" value="https://github.com/Candy0214v/test.git" />
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="AUTO_COMMIT_ON_CHERRY_PICK" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -311,7 +315,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -474,7 +478,7 @@
       <workItem from="1582355975949" duration="17807000" />
       <workItem from="1582373949747" duration="1006000" />
       <workItem from="1582375680591" duration="3680000" />
-      <workItem from="1582384363709" duration="7103000" />
+      <workItem from="1582384363709" duration="7796000" />
     </task>
     <servers />
   </component>
@@ -511,11 +515,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81792000" />
+    <option name="totallyTimeSpent" value="82485000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4975728" visible="true" weight="0.23443815" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -527,7 +530,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4987874" visible="true" weight="0.25577265" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4987874" visible="true" weight="0.330373" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39007092" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
