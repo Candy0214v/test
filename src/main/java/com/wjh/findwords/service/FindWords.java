@@ -103,8 +103,8 @@ public class FindWords {
      */
     public static void main(String[] args) {
         List dictionaryList = new ArrayList();
-        dictionaryList.add("like");
         dictionaryList.add("i");
+        dictionaryList.add("like");
         dictionaryList.add("sam");
         dictionaryList.add("sung");
         dictionaryList.add("samsung");
@@ -112,10 +112,8 @@ public class FindWords {
         dictionaryList.add("ice");
         dictionaryList.add("cream");
         dictionaryList.add("man go");
-        dictionaryList.add("me");
-        dictionaryList.add("men");
 
-        String letters = "Iiapplelikemeandmen";
+        String letters = "ilikesamsungmobile";
         FindWords splitWords = new FindWords();
         System.out.println(splitWords.splitWords(letters, dictionaryList));
     }
