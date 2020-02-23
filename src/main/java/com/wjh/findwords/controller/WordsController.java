@@ -77,15 +77,15 @@ public class WordsController {
     public String findWords(String letters, String dicType) {
         List resultList = new ArrayList();
         if (dicType.equals("defaultDic")) {
-            logger.info("defaultDictionary=="+dictionary.getDefaultDictionary());
+            logger.info("defaultDictionary==" + dictionary.getDefaultDictionary());
             resultList = findWords.splitWords(letters, dictionary.getDefaultDictionary());
         }
         if (dicType.equals("userDic")) {
-            logger.info("userDictionary=="+dictionary.getUserDictionary());
+            logger.info("userDictionary==" + dictionary.getUserDictionary());
             resultList = findWords.splitWords(letters, dictionary.getUserDictionary());
         }
         if (dicType.equals("bothDic")) {
-            logger.info("bothDictionary=="+dictionary.getBothDictionaries());
+            logger.info("bothDictionary==" + dictionary.getBothDictionaries());
             resultList = findWords.splitWords(letters, dictionary.getBothDictionaries());
         }
         String result = "";

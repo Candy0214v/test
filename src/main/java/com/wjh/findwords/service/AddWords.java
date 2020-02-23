@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @description: Add words to the dictionary.
+ * @author：Candy
+ * @date: 2020/2/22
+ */
+
 @Service
 public class AddWords {
     private Logger logger = LoggerFactory.getLogger(AddWords.class);
@@ -15,7 +21,7 @@ public class AddWords {
     /**
      * @param words      The user provided the words to the dictionary as additional input.
      * @param dictionary It is used to store the contents of dictionary.
-     * @return
+     * @return "Add success"
      */
     public String addWords(String words, Dictionary dictionary) {
         if (!words.substring(words.length() - 1).matches("[a-zA-Z]+")) {

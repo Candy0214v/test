@@ -28,6 +28,7 @@ public class InitDictionary {
         dictionary.setDefaultDictionary(dictionaryList);
 
     }
+
     public void initBoth(Dictionary dictionary) {
         List dictionaryList = new ArrayList();
         dictionaryList.add("i");

@@ -25,34 +25,34 @@ public class FindWords {
      */
     public List splitWords(String letters, List dictionary) {
         List dictionaryList = dictionary;
-        String firstLetter = letters.substring(0,1);
-        if(firstLetter.equals("i")||firstLetter.equals("I")){
-            letters = letters.substring(0,1)+" "+letters.substring(1);
+        String firstLetter = letters.substring(0, 1);
+        if (firstLetter.equalsIgnoreCase("i")) {
+            letters = letters.substring(0, 1) + " " + letters.substring(1);
         }
         for (int i = 0; i < dictionaryList.size(); i++) {
-            if(!(dictionaryList.get(i).toString().equals("i")||dictionaryList.get(i).toString().equals("I"))){
+            if (!dictionaryList.get(i).toString().equalsIgnoreCase("i")) {
                 String word = dictionaryList.get(i).toString();
                 int index = 0;
                 if (word.contains(" ")) {
                     String[] words = word.split(" ");
                     for (int j = 0; j < words.length; j++) {
-                        index = letters.indexOf(words[j]);
+                        index = letters.toLowerCase().indexOf(words[j].toLowerCase());
                         int letterLength = letters.length();
                         for (int k = index; k < letterLength; k++) {
                             if (index >= 0) {
                                 letters = letters.substring(0, index) + " " + letters.substring(index, index + words[j].length()) + " " + letters.substring(index + words[j].length());
-                                index = letters.indexOf(words[j], index + words[j].length());
+                                index = letters.toLowerCase().indexOf(words[j].toLowerCase(), index + words[j].length());
                             }
                         }
 
                     }
                 } else {
-                    index = letters.indexOf(word);
+                    index = letters.toLowerCase().indexOf(word.toLowerCase());
                     int letterLength = letters.length();
                     for (int k = index; k < letterLength; k++) {
                         if (index >= 0) {
                             letters = letters.substring(0, index) + " " + letters.substring(index, index + word.length()) + " " + letters.substring(index + word.length());
-                            index = letters.indexOf(word, index + word.length());
+                            index = letters.toLowerCase().indexOf(word.toLowerCase(), index + word.length());
                         }
                     }
                 }
@@ -84,8 +84,8 @@ public class FindWords {
         List sentenceList = new ArrayList();
         for (int i = 0; i < words.length - 1; i++) {
             for (int j = 0; j < dictionaryList.size(); j++) {
-                if ((words[i] + words[i + 1]).equals(dictionaryList.get(j).toString())) {
-                    String mergedSentence = sentence.replace(words[i] + " " + words[i + 1], dictionaryList.get(j).toString());
+                if ((words[i] + words[i + 1]).toLowerCase().equals(dictionaryList.get(j).toString().toLowerCase())) {
+                    String mergedSentence = sentence.replace(words[i] + " " + words[i + 1], words[i] + words[i + 1]);
                     sentenceList.add(mergedSentence);
                     break;
                 }
@@ -103,17 +103,18 @@ public class FindWords {
      */
     public static void main(String[] args) {
         List dictionaryList = new ArrayList();
-        dictionaryList.add("i");
+        dictionaryList.add("I");
         dictionaryList.add("like");
         dictionaryList.add("sam");
         dictionaryList.add("sung");
         dictionaryList.add("samsung");
+        dictionaryList.add("MOBILE");
         dictionaryList.add("mobile");
         dictionaryList.add("ice");
         dictionaryList.add("cream");
         dictionaryList.add("man go");
 
-        String letters = "ilikesamsungmobile";
+        String letters = "ILikeSAMSUNGMOBILElikemobilesamsungmobile";
         FindWords splitWords = new FindWords();
         System.out.println(splitWords.splitWords(letters, dictionaryList));
     }

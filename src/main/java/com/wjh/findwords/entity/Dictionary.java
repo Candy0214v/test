@@ -2,7 +2,6 @@ package com.wjh.findwords.entity;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,20 +18,6 @@ public class Dictionary {
     private List userDictionary;
 
     private List bothDictionaries;
-
-    /*public void initDefaultDictionary(){
-        List dictionaryList = new ArrayList();
-        dictionaryList.add("i");
-        dictionaryList.add("like");
-        dictionaryList.add("sam");
-        dictionaryList.add("sung");
-        dictionaryList.add("samsung");
-        dictionaryList.add("mobile");
-        dictionaryList.add("ice");
-        dictionaryList.add("cream");
-        dictionaryList.add("man go");
-        setDefaultDictionary(dictionaryList);
-    }*/
 
     public List getDefaultDictionary() {
         return defaultDictionary;
